@@ -12,11 +12,11 @@ namespace Maintain.Objects
         {
         }
 
-        public virtual DbSet<Category> Categories { get; set; }
+        public virtual DbSet<DCategory> Categories { get; set; }
         public virtual DbSet<Date> Dates { get; set; }
         public virtual DbSet<Point> Points { get; set; }
         public virtual DbSet<Unit> Units { get; set; }
-        public virtual DbSet<Category1> Category1 { get; set; }
+        public virtual DbSet<MCategory> Category1 { get; set; }
         public virtual DbSet<Country> Countries { get; set; }
         public virtual DbSet<Measure> Measures { get; set; }
         public virtual DbSet<MeasureCategory> MeasureCategories { get; set; }
@@ -25,15 +25,15 @@ namespace Maintain.Objects
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Category>()
+            modelBuilder.Entity<DCategory>()
                 .Property(e => e.CategoryID)
                 .HasPrecision(20, 0);
 
-            modelBuilder.Entity<Category>()
+            modelBuilder.Entity<DCategory>()
                 .Property(e => e.CategoryName)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Category>()
+            modelBuilder.Entity<DCategory>()
                 .HasMany(e => e.Units)
                 .WithRequired(e => e.Category)
                 .WillCascadeOnDelete(false);
@@ -88,20 +88,20 @@ namespace Maintain.Objects
                 .WithRequired(e => e.Unit)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<Category1>()
+            modelBuilder.Entity<MCategory>()
                 .Property(e => e.CategoryID)
                 .HasPrecision(20, 0);
 
-            modelBuilder.Entity<Category1>()
+            modelBuilder.Entity<MCategory>()
                 .Property(e => e.CategoryName)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Category1>()
+            modelBuilder.Entity<MCategory>()
                 .HasMany(e => e.Measures)
                 .WithRequired(e => e.Category1)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<Category1>()
+            modelBuilder.Entity<MCategory>()
                 .HasMany(e => e.MeasureCategories)
                 .WithRequired(e => e.Category1)
                 .WillCascadeOnDelete(false);

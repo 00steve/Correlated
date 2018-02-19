@@ -6,15 +6,17 @@ namespace Maintain.Objects
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("DataPoint.Category")]
-    public partial class Category
+    [Table("Measure.Category")]
+    public partial class MCategory
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Category()
+        public MCategory()
         {
-            Units = new HashSet<Unit>();
+            Measures = new HashSet<Measure>();
+            MeasureCategories = new HashSet<MeasureCategory>();
         }
 
+        [Key]
         [Column(TypeName = "numeric")]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public decimal CategoryID { get; set; }
@@ -24,6 +26,9 @@ namespace Maintain.Objects
         public string CategoryName { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Unit> Units { get; set; }
+        public virtual ICollection<Measure> Measures { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MeasureCategory> MeasureCategories { get; set; }
     }
 }

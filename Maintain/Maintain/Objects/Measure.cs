@@ -41,7 +41,7 @@ namespace Maintain.Objects
 
         public virtual Unit Unit { get; set; }
 
-        public virtual Category1 Category1 { get; set; }
+        public virtual MCategory Category1 { get; set; }
 
         public virtual Country Country { get; set; }
 

@@ -10,12 +10,11 @@ using System.Windows.Forms;
 
 namespace Maintain
 {
-    public partial class MainForm : Form
+    public partial class ImportExcelForm : Form
     {
-        public MainForm()
+        public ImportExcelForm()
         {
             InitializeComponent();
         }
-
     }
 }

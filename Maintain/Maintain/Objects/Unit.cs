@@ -29,7 +29,7 @@ namespace Maintain.Objects
         [StringLength(1000)]
         public string UnitDescription { get; set; }
 
-        public virtual Category Category { get; set; }
+        public virtual DCategory Category { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Measure> Measures { get; set; }

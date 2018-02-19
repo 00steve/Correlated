@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace Maintain.Services
 {
-    public abstract class Import
+    class ImportExcel : Import
     {
-        private bool sourceSet;
 
-        public abstract bool Load();
+        public override bool Load()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

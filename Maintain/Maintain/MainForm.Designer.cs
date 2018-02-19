@@ -96,7 +96,6 @@ namespace Maintain
             this.dataSourcesAdd.Name = "dataSourcesAdd";
             this.dataSourcesAdd.Size = new System.Drawing.Size(180, 22);
             this.dataSourcesAdd.Text = "Add";
-            this.dataSourcesAdd.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
             // fileToolStripMenuItem
             // 

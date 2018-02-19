@@ -19,7 +19,7 @@ namespace Maintain.Objects
         [Column(TypeName = "numeric")]
         public decimal CategoryID { get; set; }
 
-        public virtual Category1 Category1 { get; set; }
+        public virtual MCategory Category1 { get; set; }
 
         public virtual Measure Measure { get; set; }
     }
