@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Maintain.Services;
 
 namespace Maintain
 {
@@ -16,7 +17,9 @@ namespace Maintain
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Maintain());
+            MainForm mainForm = new MainForm();
+            UI ui = new UI(mainForm);
+            Application.Run(mainForm);
         }
     }
 }

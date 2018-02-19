@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Maintain
 {
-    public partial class Maintain : Form
+    public partial class MainForm : Form
     {
-        public Maintain()
+        public MainForm()
         {
             InitializeComponent();
         }

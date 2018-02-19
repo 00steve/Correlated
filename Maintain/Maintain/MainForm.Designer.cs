@@ -1,6 +1,8 @@
-﻿namespace Maintain
+﻿using System.Windows.Forms;
+
+namespace Maintain
 {
-    partial class Maintain
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -34,6 +36,8 @@
             this.mainMenu = new System.Windows.Forms.MenuStrip();
             this.mainMenuDataSources = new System.Windows.Forms.ToolStripMenuItem();
             this.dataSourcesAdd = new System.Windows.Forms.ToolStripMenuItem();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.screens.SuspendLayout();
             this.mainMenu.SuspendLayout();
             this.SuspendLayout();
@@ -63,17 +67,18 @@
             this.tabMeasures.Location = new System.Drawing.Point(4, 22);
             this.tabMeasures.Name = "tabMeasures";
             this.tabMeasures.Padding = new System.Windows.Forms.Padding(3);
-            this.tabMeasures.Size = new System.Drawing.Size(1307, 609);
+            this.tabMeasures.Size = new System.Drawing.Size(1307, 569);
             this.tabMeasures.TabIndex = 1;
             this.tabMeasures.Text = "Measures";
             this.tabMeasures.UseVisualStyleBackColor = true;
             // 
-            // menuStrip1
+            // mainMenu
             // 
             this.mainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem,
             this.mainMenuDataSources});
             this.mainMenu.Location = new System.Drawing.Point(0, 0);
-            this.mainMenu.Name = "menuStrip1";
+            this.mainMenu.Name = "mainMenu";
             this.mainMenu.Size = new System.Drawing.Size(1339, 24);
             this.mainMenu.TabIndex = 1;
             this.mainMenu.Text = "menuStrip1";
@@ -92,6 +97,20 @@
             this.dataSourcesAdd.Size = new System.Drawing.Size(180, 22);
             this.dataSourcesAdd.Text = "Add";
             this.dataSourcesAdd.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.quitToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Text = "File";
+            // 
+            // quitToolStripMenuItem
+            // 
+            this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
+            this.quitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.quitToolStripMenuItem.Text = "Quit";
             // 
             // Maintain
             // 
@@ -119,6 +138,17 @@
         private System.Windows.Forms.MenuStrip mainMenu;
         private System.Windows.Forms.ToolStripMenuItem mainMenuDataSources;
         private System.Windows.Forms.ToolStripMenuItem dataSourcesAdd;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem quitToolStripMenuItem;
+
+        
+        public ToolStripMenuItem QuitButton{get{return quitToolStripMenuItem;}}
+
+
+        public void Quit()
+        {
+            Application.Exit();
+        }
     }
 }
 
