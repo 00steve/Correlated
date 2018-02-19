@@ -34,10 +34,10 @@ namespace Maintain
             this.tabDataSources = new System.Windows.Forms.TabPage();
             this.tabMeasures = new System.Windows.Forms.TabPage();
             this.mainMenu = new System.Windows.Forms.MenuStrip();
-            this.mainMenuDataSources = new System.Windows.Forms.ToolStripMenuItem();
-            this.dataSourcesAdd = new System.Windows.Forms.ToolStripMenuItem();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mainMenuDataSources = new System.Windows.Forms.ToolStripMenuItem();
+            this.dataSourcesAdd = new System.Windows.Forms.ToolStripMenuItem();
             this.screens.SuspendLayout();
             this.mainMenu.SuspendLayout();
             this.SuspendLayout();
@@ -83,6 +83,20 @@ namespace Maintain
             this.mainMenu.TabIndex = 1;
             this.mainMenu.Text = "menuStrip1";
             // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.quitToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(122, 20);
+            this.fileToolStripMenuItem.Text = "File";
+            // 
+            // quitToolStripMenuItem
+            // 
+            this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
+            this.quitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.quitToolStripMenuItem.Text = "Give Up";
+            // 
             // mainMenuDataSources
             // 
             this.mainMenuDataSources.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -94,24 +108,10 @@ namespace Maintain
             // dataSourcesAdd
             // 
             this.dataSourcesAdd.Name = "dataSourcesAdd";
-            this.dataSourcesAdd.Size = new System.Drawing.Size(180, 22);
+            this.dataSourcesAdd.Size = new System.Drawing.Size(96, 22);
             this.dataSourcesAdd.Text = "Add";
             // 
-            // fileToolStripMenuItem
-            // 
-            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.quitToolStripMenuItem});
-            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
-            this.fileToolStripMenuItem.Text = "File";
-            // 
-            // quitToolStripMenuItem
-            // 
-            this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
-            this.quitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.quitToolStripMenuItem.Text = "Quit";
-            // 
-            // Maintain
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -119,7 +119,7 @@ namespace Maintain
             this.Controls.Add(this.screens);
             this.Controls.Add(this.mainMenu);
             this.MainMenuStrip = this.mainMenu;
-            this.Name = "Maintain";
+            this.Name = "MainForm";
             this.Text = " ";
             this.screens.ResumeLayout(false);
             this.mainMenu.ResumeLayout(false);
@@ -141,8 +141,8 @@ namespace Maintain
         private System.Windows.Forms.ToolStripMenuItem quitToolStripMenuItem;
 
         
-        public ToolStripMenuItem QuitButton{get{return quitToolStripMenuItem;}}
-
+        public ToolStripMenuItem QuitButton{ get { return quitToolStripMenuItem; } }
+        public ToolStripMenuItem DataSourceAddButton { get { return dataSourcesAdd; } }
 
         public void Quit()
         {

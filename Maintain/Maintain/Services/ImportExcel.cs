@@ -13,5 +13,10 @@ namespace Maintain.Services
         {
             throw new NotImplementedException();
         }
+
+        public override bool SetSource(string newSource)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
