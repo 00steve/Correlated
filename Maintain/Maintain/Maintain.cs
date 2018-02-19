@@ -10,11 +10,18 @@ using System.Windows.Forms;
 
 namespace Maintain
 {
-    public partial class Form1 : Form
+    public partial class Maintain : Form
     {
-        public Form1()
+        public Maintain()
         {
             InitializeComponent();
         }
+
+        private void addToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected MenuStrip MainMenu { get; set; }
     }
 }
