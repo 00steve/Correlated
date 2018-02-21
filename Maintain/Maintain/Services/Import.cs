@@ -5,7 +5,10 @@ namespace Maintain.Services
 {
     public abstract class Import
     {
-        public abstract DataTable Load(string file);
+        public abstract bool Load();
+        public abstract void SetDataSource(string file);
+        public abstract DataTable Data();
+        public abstract string[] Sheets();
         
     }
 }

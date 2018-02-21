@@ -84,9 +84,9 @@
     <Compile Include="Services\Database.cs" />
     <Compile Include="Services\DataSource.cs" />
     <Compile Include="Services\Import.cs" />
-    <Compile Include="Services\ImportConfirgureFormUI.cs" />
+    <Compile Include="Services\UIImportConfirgureForm.cs" />
     <Compile Include="Services\ImportExcel.cs" />
-    <Compile Include="Services\MainFormUI.cs" />
+    <Compile Include="Services\UIMainForm.cs" />
     <EmbeddedResource Include="ImportDataForm.resx">
       <DependentUpon>ImportDataForm.cs</DependentUpon>
     </EmbeddedResource>

@@ -8,8 +8,11 @@ namespace Maintain.Services
 {
     class ImportExcel : Import
     {
+        private string file;
+        private DataTable data;
+        private string[] sheets;
 
-        public override DataTable Load(string file)
+        public override bool Load()
         {
             string ext = Path.GetExtension(file);
             string provider = string.Empty;
@@ -32,54 +35,52 @@ namespace Maintain.Services
                     }
                 }
             }
-
-
-
-
-
-
+           
             String name = "Items";
-            String constr = "Provider=" + provider + "; Data Source=" +
-                            file +
-                            ";Extended Properties='Excel " + excelVersion+ ";HDR=NO;';";
-
-
-            DataTable data = null;
+            String constr = "Provider=" + provider + "; Data Source=" + file + ";Extended Properties='Excel " + excelVersion + ";HDR=NO;';";
 
             OleDbConnection con = new OleDbConnection(constr);
             con.Open();
-
-
-            DataTable dt = null;
-
-            dt = con.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
-
+            DataTable dt = con.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
             if (dt == null)
             {
-                return null;
+                return false;
             }
 
-            String[] excelSheets = new String[dt.Rows.Count];
+            sheets = new String[dt.Rows.Count];
             int i = 0;
 
             // Add the sheet name to the string array.
             foreach (DataRow row in dt.Rows)
             {
-                excelSheets[i] = row["TABLE_NAME"].ToString();
+                sheets[i] = row["TABLE_NAME"].ToString();
                 i++;
             }
 
 
             if(dt.Rows.Count > 0)
             {
-                OleDbCommand oconn = new OleDbCommand("Select * From [" + excelSheets[0] + "]", con);
+                OleDbCommand oconn = new OleDbCommand("Select * From [" + sheets[0] + "]", con);
                 OleDbDataAdapter sda = new OleDbDataAdapter(oconn);
                 data = new DataTable();
                 sda.Fill(data);
             }
             
-            return data;
+            return true;
         }
 
+        public override void SetDataSource(string file)
+        {
+            this.file = file;
+        }
+
+        public override DataTable Data()
+        {
+            return data;
+        }
+        public override string[] Sheets()
+        {
+            return sheets;
+        }
     }
 }

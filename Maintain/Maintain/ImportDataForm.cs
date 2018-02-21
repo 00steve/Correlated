@@ -8,13 +8,13 @@ namespace Maintain
     {
         private string dataFile;
         private bool isLoaded;
-
+        private DataSource dataSource;
 
 
         public bool ReloadFileData()
         {
-            DataSource fileSystem = new DataSource();
-            return fileSystem.Load(dataFile);
+            dataSource = new DataSource();
+            return dataSource.Load(dataFile);
         }
 
         public ImportDataForm(string file)
@@ -32,6 +32,6 @@ namespace Maintain
 
 
         public ComboBox SheetComboBox { get{ return sheetComboBox; } }
-
+        public DataSource ImportDataSource { get { return dataSource; } }
     }
 }

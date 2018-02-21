@@ -11,11 +11,11 @@ using static System.Windows.Forms.LinkLabel;
 
 namespace Maintain.Services
 {
-    class MainFormUI
+    class UIMainForm
     {
         private MainForm form;
 
-        public MainFormUI(MainForm form)
+        public UIMainForm(MainForm form)
         {
             this.form = form;
             setupInputs();
@@ -36,9 +36,9 @@ namespace Maintain.Services
             addSourceOpenFileDialog.RestoreDirectory = true;
             if (addSourceOpenFileDialog.ShowDialog() != DialogResult.OK) return;
             ImportDataForm form = new ImportDataForm(addSourceOpenFileDialog.FileName);
-            ImportDataFormUI formUI = new ImportDataFormUI(form);
             if (form.IsValid())
             {
+                ImportDataFormUI formUI = new ImportDataFormUI(form);
                 form.Show();
             }
             else
