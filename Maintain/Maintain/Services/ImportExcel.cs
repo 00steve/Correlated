@@ -37,20 +37,47 @@ namespace Maintain.Services
 
 
 
+
             String name = "Items";
             String constr = "Provider=" + provider + "; Data Source=" +
                             file +
                             ";Extended Properties='Excel " + excelVersion+ ";HDR=NO;';";
-            DataTable data;
+
+
+            DataTable data = null;
 
             OleDbConnection con = new OleDbConnection(constr);
-
-            OleDbCommand oconn = new OleDbCommand("Select * From [0]", con);
             con.Open();
 
-            OleDbDataAdapter sda = new OleDbDataAdapter(oconn);
-            data = new DataTable();
-            sda.Fill(data);
+
+            DataTable dt = null;
+
+            dt = con.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
+
+            if (dt == null)
+            {
+                return null;
+            }
+
+            String[] excelSheets = new String[dt.Rows.Count];
+            int i = 0;
+
+            // Add the sheet name to the string array.
+            foreach (DataRow row in dt.Rows)
+            {
+                excelSheets[i] = row["TABLE_NAME"].ToString();
+                i++;
+            }
+
+
+            if(dt.Rows.Count > 0)
+            {
+                OleDbCommand oconn = new OleDbCommand("Select * From [" + excelSheets[0] + "]", con);
+                OleDbDataAdapter sda = new OleDbDataAdapter(oconn);
+                data = new DataTable();
+                sda.Fill(data);
+            }
+            
             return data;
         }
 

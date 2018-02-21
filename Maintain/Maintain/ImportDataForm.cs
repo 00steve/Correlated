@@ -4,19 +4,20 @@ using Maintain.Services;
 
 namespace Maintain
 {
-    public partial class ImportConfigureForm : Form
+    public partial class ImportDataForm : Form
     {
         private string dataFile;
         private bool isLoaded;
 
+
+
         public bool ReloadFileData()
         {
             DataSource fileSystem = new DataSource();
-            fileSystem.Load(dataFile);
-            return false;
+            return fileSystem.Load(dataFile);
         }
 
-        public ImportConfigureForm(string file)
+        public ImportDataForm(string file)
         {
             InitializeComponent();
             dataFile = file;
@@ -24,9 +25,13 @@ namespace Maintain
         }
 
 
-        internal bool IsValid()
+        public bool IsValid()
         {
             return isLoaded;
         }
+
+
+        public ComboBox SheetComboBox { get{ return sheetComboBox; } }
+
     }
 }

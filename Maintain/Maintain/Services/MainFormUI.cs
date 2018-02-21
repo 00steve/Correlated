@@ -11,16 +11,13 @@ using static System.Windows.Forms.LinkLabel;
 
 namespace Maintain.Services
 {
-    class UI
+    class MainFormUI
     {
         private MainForm form;
 
-
-        public UI(MainForm form)
+        public MainFormUI(MainForm form)
         {
             this.form = form;
-
-
             setupInputs();
 
         }
@@ -34,13 +31,12 @@ namespace Maintain.Services
         private void onDataSourceAddClick(Object sender, EventArgs e)
         {
             OpenFileDialog addSourceOpenFileDialog = new OpenFileDialog();
-            
             addSourceOpenFileDialog.Filter = "All files|*.*|Old excel files |*.xls|Newschool excel files|*.xlsm";// "txt files (*.txt)|*.txt|All files (*.*)|*.*";
             addSourceOpenFileDialog.FilterIndex = 1;
             addSourceOpenFileDialog.RestoreDirectory = true;
-
             if (addSourceOpenFileDialog.ShowDialog() != DialogResult.OK) return;
-            ImportConfigureForm form = new ImportConfigureForm(addSourceOpenFileDialog.FileName);
+            ImportDataForm form = new ImportDataForm(addSourceOpenFileDialog.FileName);
+            ImportDataFormUI formUI = new ImportDataFormUI(form);
             if (form.IsValid())
             {
                 form.Show();

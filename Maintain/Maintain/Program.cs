@@ -18,7 +18,7 @@ namespace Maintain
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             MainForm mainForm = new MainForm();
-            UI ui = new UI(mainForm);
+            MainFormUI ui = new MainFormUI(mainForm);
             Application.Run(mainForm);
         }
     }

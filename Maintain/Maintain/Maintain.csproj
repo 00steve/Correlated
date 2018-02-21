@@ -55,11 +55,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ImportConfigureForm.cs">
+    <Compile Include="ImportDataForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ImportConfigureForm.Designer.cs">
-      <DependentUpon>ImportConfigureForm.cs</DependentUpon>
+    <Compile Include="ImportDataForm.Designer.cs">
+      <DependentUpon>ImportDataForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -84,10 +84,11 @@
     <Compile Include="Services\Database.cs" />
     <Compile Include="Services\DataSource.cs" />
     <Compile Include="Services\Import.cs" />
+    <Compile Include="Services\ImportConfirgureFormUI.cs" />
     <Compile Include="Services\ImportExcel.cs" />
-    <Compile Include="Services\UI.cs" />
-    <EmbeddedResource Include="ImportConfigureForm.resx">
-      <DependentUpon>ImportConfigureForm.cs</DependentUpon>
+    <Compile Include="Services\MainFormUI.cs" />
+    <EmbeddedResource Include="ImportDataForm.resx">
+      <DependentUpon>ImportDataForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
