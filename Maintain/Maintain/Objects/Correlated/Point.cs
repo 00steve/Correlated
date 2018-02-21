@@ -1,4 +1,4 @@
-namespace Maintain.Objects
+namespace Maintain.Objects.Correlated
 {
     using System;
     using System.Collections.Generic;

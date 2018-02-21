@@ -1,4 +1,4 @@
-namespace Maintain.Objects
+namespace Maintain.Objects.Correlated
 {
     using System;
     using System.Data.Entity;
@@ -12,28 +12,29 @@ namespace Maintain.Objects
         {
         }
 
-        public virtual DbSet<DCategory> Categories { get; set; }
+        public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Date> Dates { get; set; }
         public virtual DbSet<Point> Points { get; set; }
         public virtual DbSet<Unit> Units { get; set; }
-        public virtual DbSet<MCategory> Category1 { get; set; }
+        public virtual DbSet<Category1> Category1 { get; set; }
         public virtual DbSet<Country> Countries { get; set; }
         public virtual DbSet<Measure> Measures { get; set; }
         public virtual DbSet<MeasureCategory> MeasureCategories { get; set; }
         public virtual DbSet<Region> Regions { get; set; }
         public virtual DbSet<Source> Sources { get; set; }
+        public virtual DbSet<VW_MeasureDetails> VW_MeasureDetails { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<DCategory>()
+            modelBuilder.Entity<Category>()
                 .Property(e => e.CategoryID)
                 .HasPrecision(20, 0);
 
-            modelBuilder.Entity<DCategory>()
+            modelBuilder.Entity<Category>()
                 .Property(e => e.CategoryName)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<DCategory>()
+            modelBuilder.Entity<Category>()
                 .HasMany(e => e.Units)
                 .WithRequired(e => e.Category)
                 .WillCascadeOnDelete(false);
@@ -88,20 +89,20 @@ namespace Maintain.Objects
                 .WithRequired(e => e.Unit)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<MCategory>()
+            modelBuilder.Entity<Category1>()
                 .Property(e => e.CategoryID)
                 .HasPrecision(20, 0);
 
-            modelBuilder.Entity<MCategory>()
+            modelBuilder.Entity<Category1>()
                 .Property(e => e.CategoryName)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<MCategory>()
+            modelBuilder.Entity<Category1>()
                 .HasMany(e => e.Measures)
                 .WithRequired(e => e.Category1)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<MCategory>()
+            modelBuilder.Entity<Category1>()
                 .HasMany(e => e.MeasureCategories)
                 .WithRequired(e => e.Category1)
                 .WillCascadeOnDelete(false);
@@ -176,6 +177,11 @@ namespace Maintain.Objects
                 .Property(e => e.RegionName)
                 .IsUnicode(false);
 
+            modelBuilder.Entity<Region>()
+                .HasMany(e => e.Countries)
+                .WithOptional(e => e.Region)
+                .HasForeignKey(e => e.CurrentRegionID);
+
             modelBuilder.Entity<Source>()
                 .Property(e => e.SourceID)
                 .HasPrecision(20, 0);
@@ -194,6 +200,34 @@ namespace Maintain.Objects
 
             modelBuilder.Entity<Source>()
                 .Property(e => e.SourceURL)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<VW_MeasureDetails>()
+                .Property(e => e.Unit)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<VW_MeasureDetails>()
+                .Property(e => e.Unit_Category)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<VW_MeasureDetails>()
+                .Property(e => e.Region)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<VW_MeasureDetails>()
+                .Property(e => e.Country)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<VW_MeasureDetails>()
+                .Property(e => e.Name)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<VW_MeasureDetails>()
+                .Property(e => e.Description)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<VW_MeasureDetails>()
+                .Property(e => e.Measure_Category)
                 .IsUnicode(false);
         }
     }

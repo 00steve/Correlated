@@ -88,7 +88,8 @@ CREATE TABLE Measure.[Source](
 	MeasureID NUMERIC(20,0) NOT NULL FOREIGN KEY REFERENCES Measure.Measure(MeasureID),
 	SourceName VARCHAR(200) NOT NULL,
 	SourceDescription VARCHAR(1000),
-	SourceURL VARCHAR(1000) NOT NULL
+	SourceURL VARCHAR(1000) NOT NULL,
+	SourceConfiguration VARCHAR(MAX)
 );
 
 

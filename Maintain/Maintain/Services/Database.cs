@@ -1,19 +1,24 @@
-﻿using Maintain.Objects;
-using System;
+﻿
+
+using Maintain.Objects.Correlated;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Maintain.Services
 {
     class Database
     {
-        static public DataSource GetDataSource(string url)
+        static public Source GetSource(string url)
         {
-            Correlated s = new Correlated();
-            //return s.
-            return null;
+            Correlated c = new Correlated();
+            Source s = c.Sources.Where(x => x.SourceURL == url).FirstOrDefault();
+            if (s == null)
+            {
+                s = new Source();
+                s.SourceURL = url;
+            }
+            return s;
         }
     }
 }

@@ -1,4 +1,4 @@
-namespace Maintain.Objects
+namespace Maintain.Objects.Correlated
 {
     using System;
     using System.Collections.Generic;
@@ -7,10 +7,10 @@ namespace Maintain.Objects
     using System.Data.Entity.Spatial;
 
     [Table("Measure.Category")]
-    public partial class MCategory
+    public partial class Category1
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public MCategory()
+        public Category1()
         {
             Measures = new HashSet<Measure>();
             MeasureCategories = new HashSet<MeasureCategory>();

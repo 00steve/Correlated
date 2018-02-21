@@ -1,4 +1,4 @@
-namespace Maintain.Objects
+namespace Maintain.Objects.Correlated
 {
     using System;
     using System.Collections.Generic;
@@ -6,27 +6,23 @@ namespace Maintain.Objects
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("Measure.Region")]
-    public partial class Region
+    [Table("DataPoint.Date")]
+    public partial class Date
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Region()
+        public Date()
         {
-            Countries = new HashSet<Country>();
-            Measures = new HashSet<Measure>();
+            Points = new HashSet<Point>();
         }
 
         [Column(TypeName = "numeric")]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public decimal RegionID { get; set; }
+        public decimal DateID { get; set; }
 
-        [StringLength(100)]
-        public string RegionName { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Country> Countries { get; set; }
+        [Column(TypeName = "datetime2")]
+        public DateTime DT { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Measure> Measures { get; set; }
+        public virtual ICollection<Point> Points { get; set; }
     }
 }
