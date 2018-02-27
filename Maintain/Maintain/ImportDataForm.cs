@@ -34,5 +34,6 @@ namespace Maintain
         public ComboBox SheetComboBox { get{ return sheetComboBox; } }
         public DataSource ImportDataSource { get { return dataSource; } }
         public DataGridView DataGrid { get { return data; } }
+        public TextBox MeasureLabelsTextBox { get { return measureLabelsTextBox; } }
     }
 }
