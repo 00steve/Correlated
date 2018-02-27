@@ -1,4 +1,5 @@
 ﻿
+using System.Collections.Generic;
 using System.Data;
 
 namespace Maintain.Services
@@ -8,7 +9,7 @@ namespace Maintain.Services
         public abstract bool Load();
         public abstract void SetDataSource(string file);
         public abstract DataTable Data();
-        public abstract string[] Sheets();
-        
+        public abstract List<string> Tables();
+        public abstract bool LoadTable(string table);
     }
 }

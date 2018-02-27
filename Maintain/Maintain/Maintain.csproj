@@ -79,6 +79,7 @@
     <Compile Include="Objects\Correlated\Source.cs" />
     <Compile Include="Objects\Correlated\Unit.cs" />
     <Compile Include="Objects\Correlated\VW_MeasureDetails.cs" />
+    <Compile Include="Objects\UI\CellSelector.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Database.cs" />

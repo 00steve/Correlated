@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.OleDb;
 using System.IO;
@@ -10,7 +11,9 @@ namespace Maintain.Services
     {
         private string file;
         private DataTable data;
-        private string[] sheets;
+        private List<string> sheets;
+        String connectionString;
+        String currentSheet;
 
         public override bool Load()
         {
@@ -37,9 +40,9 @@ namespace Maintain.Services
             }
            
             String name = "Items";
-            String constr = "Provider=" + provider + "; Data Source=" + file + ";Extended Properties='Excel " + excelVersion + ";HDR=NO;';";
+            connectionString = "Provider=" + provider + "; Data Source=" + file + ";Extended Properties='Excel " + excelVersion + ";HDR=NO;';";
 
-            OleDbConnection con = new OleDbConnection(constr);
+            OleDbConnection con = new OleDbConnection(connectionString);
             con.Open();
             DataTable dt = con.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
             if (dt == null)
@@ -47,25 +50,34 @@ namespace Maintain.Services
                 return false;
             }
 
-            sheets = new String[dt.Rows.Count];
-            int i = 0;
-
+            sheets = new List<string>();
             // Add the sheet name to the string array.
             foreach (DataRow row in dt.Rows)
             {
-                sheets[i] = row["TABLE_NAME"].ToString();
-                i++;
+                sheets.Add(row["TABLE_NAME"].ToString());
+ 
             }
-
-
+           
             if(dt.Rows.Count > 0)
             {
-                OleDbCommand oconn = new OleDbCommand("Select * From [" + sheets[0] + "]", con);
-                OleDbDataAdapter sda = new OleDbDataAdapter(oconn);
-                data = new DataTable();
-                sda.Fill(data);
+                return LoadTable(sheets[0]);
+            }
+            else
+            {
+                return false;
             }
             
+        }
+
+        public override bool LoadTable(string table)
+        {
+            if (!sheets.Contains(table)) return false;
+            OleDbConnection con = new OleDbConnection(connectionString);
+            OleDbCommand oconn = new OleDbCommand("Select * From [" + table + "]", con);
+            OleDbDataAdapter sda = new OleDbDataAdapter(oconn);
+            data = new DataTable();
+            sda.Fill(data);
+            currentSheet = table;
             return true;
         }
 
@@ -78,7 +90,7 @@ namespace Maintain.Services
         {
             return data;
         }
-        public override string[] Sheets()
+        public override List<string> Tables()
         {
             return sheets;
         }
